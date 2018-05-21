@@ -150,6 +150,9 @@
 #      },
 #    }
 #
+# [*cloudinit*]
+#   If set to true, consul will wait for cloud-init to finish before starting
+# 
 class consul (
   Hash $acls                                 = $consul::params::acls,
   $arch                                      = $consul::params::arch,
@@ -195,6 +198,7 @@ class consul (
   Hash $watches                              = $consul::params::watches,
   Optional[String] $shell                    = $consul::params::shell,
   Boolean $enable_beta_ui                    = false,
+  Boolean $cloudinit                         = false,
 ) inherits consul::params {
 
   # lint:ignore:140chars
