@@ -1,6 +1,6 @@
 [Unit]
 Description=Consul Agent
-After=network.target
+After=network.target <% if scope.lookupvar('consul::cloudinit') == true -%>cloud-final.service<% end -%>
 
 [Service]
 <% if @enable_beta_ui == true -%>
